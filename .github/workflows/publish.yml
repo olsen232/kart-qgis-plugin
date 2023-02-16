@@ -20,8 +20,9 @@ jobs:
       - name: Experiment with ls
         run: |
           pwd
-          ls ../../..
-          tree ../../..
+          echo ${{ github.workspace }}
+          ls ${{ github.workspace }}
+          tree {{ github.workspace }}
 
       - name: Download release
         uses: i3h/download-release-asset@v1
