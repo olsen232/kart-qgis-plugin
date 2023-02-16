@@ -13,25 +13,17 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Experiment with echo
-        run: |
-          echo "env.GITHUB_REF_NAME: ${{ env.GITHUB_REF_NAME }}"
-          echo "env.GITHUB_REF: ${{ env.GITHUB_REF }}"
-          echo "github.ref_name: ${{ github.ref_name }}"
-          echo "github.ref: ${{ github.ref }}"
-
-      - name: Experiment with ls
-        run: |
-          pwd
-          echo ${{ github.workspace }}
-          ls
-          tree
-
       - name: Download release
         uses: i3h/download-release-asset@v1
         with:
           owner: olsen232
           repo: kart-qgis-plugin
-          tag: ${{ env.GITHUB_REF_NAME }}
-          file: "kart-${{ env.GITHUB_REF_NAME }}.zip"
+          tag: ${{ github.ref_name }}
+          file: "kart-${{ github.ref_name }}.zip"
 
+      - name: Publish to QGIS
+        env:
+          QGIS_CREDENTIALS: ${{ secrets.QGIS_CREDENTIALS }}
+        run: |
+          ls -l ./helper.py
+          ls -l "kart-${{ github.ref_name }}.zip"
