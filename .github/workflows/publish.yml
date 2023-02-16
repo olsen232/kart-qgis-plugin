@@ -17,6 +17,12 @@ jobs:
           echo "github.ref_name: ${{ github.ref_name }}"
           echo "github.ref: ${{ github.ref }}"
 
+      - name: Experiment with ls
+        run: |
+          pwd
+          ls
+          tree
+
       - name: Download release
         uses: i3h/download-release-asset@v1
         with:
