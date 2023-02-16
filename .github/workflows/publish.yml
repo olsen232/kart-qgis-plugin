@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
       - name: Experiment with echo
         run: |
           echo "env.GITHUB_REF_NAME: ${{ env.GITHUB_REF_NAME }}"
@@ -18,7 +21,6 @@ jobs:
           echo "github.ref: ${{ github.ref }}"
 
       - name: Experiment with ls
-        uses: actions/checkout@v3
         run: |
           pwd
           echo ${{ github.workspace }}
