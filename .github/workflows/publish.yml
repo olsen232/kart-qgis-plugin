@@ -20,8 +20,8 @@ jobs:
       - name: Experiment with ls
         run: |
           pwd
-          ls ../..
-          tree ../..
+          ls ../../..
+          tree ../../..
 
       - name: Download release
         uses: i3h/download-release-asset@v1
