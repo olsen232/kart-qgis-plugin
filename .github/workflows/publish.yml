@@ -21,8 +21,8 @@ jobs:
         run: |
           pwd
           echo ${{ github.workspace }}
-          ls ${{ github.workspace }}
-          tree {{ github.workspace }}
+          ls
+          tree
 
       - name: Download release
         uses: i3h/download-release-asset@v1
